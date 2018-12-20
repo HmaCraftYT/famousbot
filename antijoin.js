@@ -5,7 +5,7 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!,script by HemaCraft`);
 });
  
- client.on("ready", () => { // ßæÏ ÑíäÈæ
+ client.on("ready", () => { // ÃŸÃ¦Ã Ã‘Ã­Ã¤ÃˆÃ¦
   function lol() {
     client.guilds.get('525263074190426112').roles.find("name", "rainbow").setColor("RANDOM");
   };
@@ -313,4 +313,4 @@ client.on('message', message => {
           if (err) console.log(err.message);
       });
   })
-client.login('NTI1MjY1MDA0ODYyMzczODg4.Dv0Gtg.iGWUvrDv2h2Pi4T1I0MN3Yi850U');
+client.login(process.env.BOT_TOKEN);
