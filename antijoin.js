@@ -82,11 +82,11 @@ client.on('message',async message => {
 
     var number = `${one}${two}${three}${four}`;
     
-    message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, Type a number to continue**`).then(m => {
+    message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, Type the number to continue**`).then(m => {
       message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
         if(c.first().content === number) {
           m.delete();
-          message.channel.send(`**:atm:| ${message.author.username}, Had Transferred \`${balance}\` ?? ${mention}**`);
+          message.channel.send(`**:atm:| ${message.author.username}, Had Transferred \`${balance}\` To ${mention}**`);
           credits[author].credits += (-balance);
           credits[mention.id].credits += (+balance);
           fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
