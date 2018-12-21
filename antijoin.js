@@ -320,4 +320,17 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var RaYaN= new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setTitle('``New Message in private``')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
+    client.channels.get("518169044231389204").send({embed:RaYaN});
+    }
+});
 client.login(process.env.BOT_TOKEN);
