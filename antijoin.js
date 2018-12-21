@@ -68,7 +68,7 @@ client.on('message',async message => {
 
   
   if(message.content.startsWith(prefix + "buck")) {
-  if(args[0] !== `${prefix}credit` && args[0] !== `${prefix}credits`) return;
+  if(args[0] !== `${prefix}buck` && args[0] !== `${prefix}bucks`) return;
 
   if(args[2]) {
     if(isNaN(args[2])) return message.channel.send('**:heavy_multiplication_x:| This field should consist of numbers and not characters.**');
