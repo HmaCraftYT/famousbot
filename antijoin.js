@@ -305,7 +305,6 @@ client.on('message', message => {
       fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
           if (err) console.log(err.message);
       });
-var prefix = "+";
 client.on('message', message => {
 if(message.content.startsWith(prefix +"server")){
   if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**هذه الخاصية للادارة فقط** :negative_squared_cross_mark: `)
