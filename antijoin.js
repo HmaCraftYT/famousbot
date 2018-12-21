@@ -365,7 +365,4 @@ client.on("guildMemberAdd", member => {
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
 })
-client.on('guildMemberAdd', member=> {
-    member.addRole(member.guild.roles.find("name","rainbow"));
-    });
 client.login(process.env.BOT_TOKEN);
