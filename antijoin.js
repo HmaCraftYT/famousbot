@@ -9,7 +9,7 @@ client.on('ready', () => {
   function lol() {
     client.guilds.get('525263074190426112').roles.find("name", "rainbow").setColor("RANDOM");
   };
-  setInterval(lol, 10000);
+  setInterval(lol, 5000);
 });
 var prefix = '+';
 
@@ -305,25 +305,18 @@ client.on('message', message => {
       fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
           if (err) console.log(err.message);
       });
-  })
-const Discord = require('discord.js');
-const client = new Discord.Client();
+  });
 const ytdl = require('ytdl-core');
-const request = require('request');
-const fs = require('fs');
+const request = require('request');;
 const getYoutubeID = require('get-youtube-id');
 const fetchVideoInfo = require('youtube-info');
 const yt_api_key = "AIzaSyDeoIH0u1e72AtfpwSKKOSy3IPp2UHzqi4";
 const prefix = '+'; 
-client.on('ready', () => {
-    console.log('I am ready!');
 });
 client.on('ready', () => {
   client.user.setGame('+help.','https://www.twitch.tv/peery13');
 });
-client.on('ready', function() {
-    console.log(`i am ready ${client.user.username}`);
-});
+
 
 
 
