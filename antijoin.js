@@ -142,39 +142,13 @@ client.on('message',async message => {
     }, ms("1d"));
   }
 });
-var prefix = "+";
 client.on('message', message => {
-  if (message.guild) {
- let embed = new Discord.RichEmbed()
-  let args = message.content.split(' ').slice(1).join(' ');
-if(message.content.split(' ')[0] == prefix + 'bc') {
-  if (!args[1]) {
-message.channel.send("**+bc <message>**");
-return;
+if(message.content == '<@525436342029647907>') {
+message.channel.startTyping()
+setTimeout(() => { 
+message.channel.stopTyping()
+}, 7000);
 }
-      message.guild.members.forEach(m => {
- if(!message.member.hasPermission('ADMINISTRATOR')) return;
-          var bc = new Discord.RichEmbed()
-          .setAuthor(message.author.username, message.author.avatarURL)
-          .addField(' The server', `${message.guild.name}`, true)
-          .addField(' who sended the messege ', `${message.author.username}!${message.author.discriminator}`, true)
-          .addField(' the messege ', args)
-          .setThumbnail(message.guild.iconURL)
-          .setColor('RANDOM')
-          m.send(`${m}`,{embed: bc});
-      });
-      const unknown = new Discord.RichEmbed()
-      .setAuthor(message.author.username, message.author.avatarURL)
-      .setTitle('✅| the messege is loading ')
-      .addBlankField(true)
-      .addField('♨| i got sended to  ', message.guild.memberCount , true)
-      .addField('📝| the message ', args)
-      .setColor('RANDOM')
-      message.channel.sendEmbed(embed);
-  }
-  } else {
-      return;
-  }
 });
        const antic = JSON.parse(fs.readFileSync('./antic.json', 'utf8'));
 client.on("message", message =>{
