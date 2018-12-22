@@ -561,11 +561,9 @@ client.on('message', message => {
   })
 }
 });
-const Discord = require('discord.js');
-const client = new Discord.Client();
-const PREFIX = "+"
-const Util = require('discord.js');
- 
+);
+const PREFIX = "+";
+
 const getYoutubeID = require('get-youtube-id');
  
 const fetchVideoInfo = require('youtube-info');
