@@ -157,124 +157,164 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
-var prefix = "+";
-let antihack = JSON.parse(fs.readFileSync('./antihack.json' , 'utf8'));//require antihack.json file
-client.on('message', message => {
-    if(message.content.startsWith(prefix + "toggleAntihack")) {
-        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
-        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
-        if(!antihack[message.guild.id]) antihack[message.guild.id] = {
-          onoff: 'Off'
-        }
-          if(antihack[message.guild.id].onoff === 'Off') return [message.channel.send(`**? The AntiHack Is __ON__ !**`), antihack[message.guild.id].onoff = 'On']
-          if(antihack[message.guild.id].onoff === 'On') return [message.channel.send(`**? The AntiHack Is __OFF__ !**`), antihack[message.guild.id].onoff = 'Off']
-          fs.writeFile("./antihack.json", JSON.stringify(antihack), (err) => {
-            if (err) console.error(err)
-            .catch(err => {
-              console.error(err);
-          });
-            });
-          }
+       const antic = JSON.parse(fs.readFileSync('./antic.json', 'utf8'));
+client.on("message", message =>{
+if(!antic[message.author.id]) {
+antic[message.author.id] = {
+actions: 0
+}}
+})
 
-        })
-        //antihack with ON , OFF ! RARE CODE 
-        //LIKE PLUSBOT !
 
-  let banse = new Set();
-  let bane = JSON.parse(fs.readFileSync('./data1.json' , 'utf8'));//require data1.json
-  client.on('guildBanAdd', function(guild) {
-    guild.fetchAuditLogs().then(logs => {
-      const ser = logs.entries.first().executor;
-      if(!bane[ser.id+guild.id]) bane[ser.id+guild.id] = {
-        bans: 2
-      }
-      if(antihack[guild.guild.id].onoff === 'Off') return;
-      let boner = bane[ser.id+guild.id]
-  banse.add(ser.id)
-  boner.bans = Math.floor(boner.bans+1)
-  
-  
-  setTimeout(() => {
-    boner.bans = 2
-    banse.delete(ser.id)
-  },8000)
-  
-  if(boner.bans > 2) {
-    let roles = guild.members.get(ser.id).roles.array()
-  guild.members.get(ser.id).removeRoles(roles)
-  }
-  
-      })
-      fs.writeFile('./data1.json', JSON.stringify(bane), (err) => {
-  if (err) console.error(err);
-  })
-  
-  })
-  client.on('guildMemberRemove', (u) => {
-      u.guild.fetchAuditLogs().then( s => {
-          var ss = s.entries.first();
-          if (ss.action == `MEMBER_KICK`) {
-          if (!data[ss.executor.id]) {
-              data[ss.executor.id] = {
-              time : 1
-            };
-            if(antihack[u.guild.id].onoff === 'Off') return;
+client.on('guildMemberRemove', alpha => {
+alpha.guild.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "MEMBER_KICK") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 5) {
+alpha.guild.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
 
-        } else {  
-            data[ss.executor.id].time+=1
-        };
-        if(antihack[u.guild.id].onoff === 'Off') return;
-  data[ss.executor.id].time = 0
-  u.guild.members.get(ss.executor.id).roles.forEach(r => {
-                  r.edit({
-                      permissions : []
-                  });
-                  data[ss.executor.id].time = 0
-              });
-          setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {
-                  data[ss.executor.id].time = 0
-              }
-          })
-      };
-      });
-      fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
-          if (err) console.log(err.message);
-      });
-  });
-  client.on('roleDelete', (u) => {
-      u.guild.fetchAuditLogs().then( s => {
-          var ss = s.entries.first();
-          if (ss.action == `ROLE_DELETE`) {
-          if (!data[ss.executor.id]) {
-              data[ss.executor.id] = {
-              time : 1
-            };
-            if(antihack[u.guild.id].onoff === 'Off') return;
 
-        } else {
-            data[ss.executor.id].time+=1
-        };
-        if(antihack[u.guild.id].onoff === 'Off') return;
 
-  data[ss.executor.id].time = 0
-  u.guild.members.get(ss.executor.id).roles.forEach(r => {
-                  r.edit({
-                      permissions : []
-                  });
-                  data[ss.executor.id].time = 0
-              });
-          setTimeout(function(){
-              if (data[ss.executor.id].time <= 3) {
-                  data[ss.executor.id].time = 0
-              }
-          },60000)
-      };
-      });
-      fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
-          if (err) console.log(err.message);
-      }); 
-  });
+
+
+client.on('roleDelete', alpha => {
+alpha.guild.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "ROLE_DELETE") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 3) {
+alpha.guild.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
+
+
+
+
+client.on('channelDelete', alpha => {
+alpha.guild.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "CHANNEL_DELETE") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 1) {
+alpha.guild.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
+
+
+client.on('roleCreate', alpha => {
+alpha.guild.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "ROLE_CREATE") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 4) {
+alpha.guild.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
+
+
+
+
+client.on('channelCreate', alpha => {
+alpha.guild.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "CHANNEL_CREATE") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 3) {
+alpha.guild.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
+
+
+client.on('guildBanAdd', function(alpha){
+alpha.fetchAuditLogs().then( ac => {
+var anti = ac.entries.first();
+if(anti.action == "MEMBER_BAN_ADD") {
+if(!antic[anti.executor.id]) {
+antic[anti.executor.id] = {
+actions: 0
+};
+} else { 
+antic[anti.executor.id].actions+=1
+if (antic[anti.executor.id].actions == 3) {
+alpha.members.get(anti.executor.id).ban("Griefing")
+console.log("banned griefer 1")
+antic[anti.executor.id].actions = 0
+}
+}
+    }
+    });
+    fs.writeFile("./antic.json", JSON.stringify(antic) ,(err) =>{
+        if (err) console.log(err.message);
+    });
+});
   client.on('channelDelete', (u) => {
       u.guild.fetchAuditLogs().then( s => {
           var ss = s.entries.first();
