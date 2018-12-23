@@ -561,13 +561,14 @@ client.on('message', message => {
   })
 }
 });
+var prefix = "+";
 client.on('message',async message => {
 if(message.author.id === "518169044231389204") {
 let args = message.content.split(" ");
 if(args[0] === `${prefix}addbucks`) {
 if(!args[1] || isNaN(args[1]) return message.reply("FAILED");
-credits[message.author.id].credits += (+args[1]);
-fs.writeFileSync('./credits.json', JSON.stringify(credits, null, 4));
+bucks[message.author.id].bucks += (+args[1]);
+fs.writeFileSync('./credits.json', JSON.stringify(bucks, null, 4));
 message.reply(args[1] + " $ ADDED TO YOUR ACCOUNT.");
 }
 }
