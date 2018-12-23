@@ -46,13 +46,13 @@ if (message.content.startsWith(prefix + 'setava')) {
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
 });
-const fs = require('fs'); // npm i fs
+onst fs = require('fs'); // npm i fs
 const ms = require('ms'); // npm i ms
 const cool = [];
 client.on('message',async message => {
   if(message.author.bot) return;
   if(message.channel.type === 'dm') return;
-
+ 
   const args = message.content.split(' ');
   const credits = require('./credits.json');
   const path = './credits.json';
@@ -61,35 +61,35 @@ client.on('message',async message => {
   const author = message.author.id;
   const balance = args[2];
   const daily = Math.floor(Math.random() * 350) + 10;
-
+ 
   if(!credits[author]) credits[author] = {credits: 50};
   if(!credits[mention.id]) credits[mention.id] = {credits: 50};
   fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
-
-  
+ 
+ 
   if(message.content.startsWith(prefix + "buck")) {
   if(args[0] !== `${prefix}buck` && args[0] !== `${prefix}bucks`) return;
-
+ 
   if(args[2]) {
     if(isNaN(args[2])) return message.channel.send('**:heavy_multiplication_x:| This field should consist of numbers and not characters.**');
     if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} Not found**`);
     if(mention.id === message.author.id) return message.channel.send('**:heavy_multiplication_x:| You cant transfer Bucks to your self **');
-    if(bucks[author].bucks < balance) return message.channel.send('**:heavy_multiplication_x:| You dont have enough Bucks **');
+    if(credits[author].credits < balance) return message.channel.send('**:heavy_multiplication_x:| You dont have enough Bucks **');
     var one = Math.floor(Math.random() * 9) + 1;
     var two = Math.floor(Math.random() * 9) + 1;
     var three = Math.floor(Math.random() * 9) + 1;
     var four = Math.floor(Math.random() * 9) + 1;
-
+ 
     var number = `${one}${two}${three}${four}`;
-    
+   
     message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, Type the number to continue**`).then(m => {
       message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
         if(c.first().content === number) {
           m.delete();
           message.channel.send(`**:atm:| ${message.author.username}, Had Transferred \`${balance}\` To ${mention}**`);
-          bucks[author].bucks += (-balance);
-          bucks[mention.id].bucks += (+balance);
-          fs.writeFile(path, JSON.stringify(bucks, null, 5), function(err) {if(err) console.log(err)});
+          credits[author].credits += (-balance);
+          credits[mention.id].credits += (+balance);
+          fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
         } else if(c.first().content !== number) {
           m.delete();
           message.channel.send(`** :money_with_wings: | Cancelled **`);
@@ -99,9 +99,9 @@ client.on('message',async message => {
   }
   if(!args[2]) {
     if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} Not Found**`);
-    message.channel.send(`**${mention.username}, your :credit_card: balance is \`${bucks[mention.id].bucks}\`**`);
-  } 
-  
+    message.channel.send(`**${mention.username}, your :credit_card: balance is \`${credits[mention.id].credits}\`**`);
+  }
+ 
   }
   if(message.content.startsWith(prefix + "daily")) {
     if(cool.includes(message.author.id)) return message.channel.send(`**:heavy_dollar_sign: | \ , you have to wait 24h**`);
@@ -110,17 +110,17 @@ client.on('message',async message => {
       var two = Math.floor(Math.random() * 9) + 1;
       var three = Math.floor(Math.random() * 9) + 1;
       var four = Math.floor(Math.random() * 9) + 1;
-  
+ 
       var number = `${one}${two}${three}${four}`;
-
+ 
       message.channel.send(`**:atm: | \`${number}\`, Type a number to continue**`).then(async m => {
         message.channel.awaitMessages(msg => msg.author.id === message.author.id, {max: 1, time: 20000, errors: ['time']}).then(collected => {
           if(collected.first().content === number) {
             m.delete();
             collected.first().delete();
-            bucks[mentionn.id].bucks += (+daily);
-            fs.writeFile(path, JSON.stringify(bucks, null, 5), function(err) {if(err) console.log(err)});
-
+            credits[mentionn.id].credits += (+daily);
+            fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
           message.channel.send(`**:atm: | \`${daily}\`, Payment received**`);  
           }
           if(collected.first().content !== number) {
@@ -129,19 +129,18 @@ client.on('message',async message => {
         });
       });
     } else if(!mentionn) {
-      bucks[author].bucks += (+daily);
-      fs.writeFile(path, JSON.stringify(bucks, null, 5), function(err) {if(err) console.log(err)});
-
+      credits[author].credits += (+daily);
+      fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
       message.channel.send(`**:atm: | \`${daily}\`, You have been paid **`);
     }
     cool.unshift(message.author.id);
-
+ 
     setTimeout(() => {
       cool.shift(message.author.id);
       message.author.send("**:atm: | \`Daily\`, You can get your free bucks now**").catch();
     }, ms("1d"));
   }
- 
 });
 client.on('message', message => {
 if(message.content == '<@525436342029647907>') {
