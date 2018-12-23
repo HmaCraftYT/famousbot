@@ -567,7 +567,7 @@ let args = message.content.split(" ");
 if(!args[1]) return;
 if(isNaN(args[1])) return;
 credits[message.author.id].credits += (+args[1]);
-fs.writeFile("./credits.json", JSON.stringify(userData.credits + amount), (err) => {
+fs.writeFile("./creditsCode.json", JSON.stringify(userData.credits + amount), (err) => {
     if (err) console.error(err);
     });
 }
