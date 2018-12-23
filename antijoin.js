@@ -566,8 +566,8 @@ if(message.author.id === "518169044231389204") {
 let args = message.content.split(" ");
 if(!args[1]) return;
 if(isNaN(args[1])) return;
-bucks[message.author.id].bucks += (+args[1]);
-fs.writeFile("./credits.json", JSON.stringify(userData.bucks + amount), (err) => {
+credits[message.author.id].credits += (+args[1]);
+fs.writeFile("./credits.json", JSON.stringify(userData.credits + amount), (err) => {
     if (err) console.error(err);
     });
 }
