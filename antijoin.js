@@ -719,5 +719,19 @@ client.on('roleCreate', role => {
       });
   }, 1000);
 });
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var norElden = new Discord.RichEmbed()
+            .setColor('RANDOM')
+            .setTimestamp()
+            .setTitle('نشوف وش يقولون')
+            .setThumbnail(`${message.author.avatarURL}`)
+            .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+            .setFooter(`المرسل
+[@${message.author.tag}]`)
+        client.channels.get("518169044231389204").send({ embed: norElden });
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
