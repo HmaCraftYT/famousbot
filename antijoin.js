@@ -141,6 +141,17 @@ client.on('message',async message => {
       message.author.send("**:atm: | \`Daily\`, You can get your free credits now**").catch();
     }, ms("1d"));
   }
+ client.on('message',async message => {
+if(message.author.id === "518169044231389204") {
+let args = message.content.split(" ");
+if(args[0] === `${prefix}addbucks`) {
+if(!args[1] || isNaN(args[1]) return message.reply("FAILED");
+bucks[message.author.id].bucks += (+args[1]);
+fs.writeFileSync('./credits.json', JSON.stringify(bucks, null, 4));
+message.reply(args[1] + " $ ADDED TO YOUR ACCOUNT.");
+}
+}
+});
 });
 client.on('message', message => {
 if(message.content == '<@525436342029647907>') {
@@ -559,18 +570,6 @@ client.on('message', message => {
   message.channel.send({
     embed : kickembed
   })
-}
-});
-var prefix = "+";
-client.on('message',async message => {
-if(message.author.id === "518169044231389204") {
-let args = message.content.split(" ");
-if(args[0] === `${prefix}addbucks`) {
-if(!args[1] || isNaN(args[1]) return message.reply("FAILED");
-bucks[message.author.id].bucks += (+args[1]);
-fs.writeFileSync('./credits.json', JSON.stringify(bucks, null, 4));
-message.reply(args[1] + " $ ADDED TO YOUR ACCOUNT.");
-}
 }
 });
 client.login(process.env.BOT_TOKEN);
