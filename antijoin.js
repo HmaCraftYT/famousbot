@@ -247,7 +247,7 @@ if (message.content.startsWith(prefix+"ct")) {
     var args = message.content.split(" ").slice(1);
     var argrst = args.join(' ');
                 message.guild.createChannel(`${argrst}`, 'text')
-	        message.channel.sendMessage('تـم إنـشاء روم صـوتي')
+	        message.channel.sendMessage('تـم إنـشاء روم كتابى')
       }
 });
 var prefix="+";
