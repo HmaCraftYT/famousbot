@@ -398,7 +398,7 @@ client.on('message', message => {
 });
 var prefix ="+";
 client.on('message', async message => {
-  if(message.content.startsWith(prefix + "slfstr")) {
+  if(message.content.startsWith(prefix + "system")) {
     let i = client.users.size;
     if(message.author.id !== '518169044231389204') return message.channel.send('❎ » هذا الأمر مخصص لصاحب البوت فقط');
     var args = message.content.split(' ').slice(1).join(' ');
@@ -418,7 +418,7 @@ client.on("message", message => {
 	if( !message.guild ) return;
 	if( !msg.startsWith( prefix + 'role' ) ) return;
 	if(!message.member.hasPermission('MANAGE_ROLES')) return message.channel.send(' **__ليس لديك صلاحيات__**');
-	if( msg.toLowerCase().startsWith( prefix + 'rerole' ) ){
+	if( msg.toLowerCase().startsWith( prefix + 'drole' ) ){
 		if( !args[0] ) return message.reply( '**:x: يرجى وضع الشخص المراد سحب منه الرتبة**' );
 		if( !args[1] ) return message.reply( '**:x: يرجى وضع الرتبة المراد سحبها من الشخص**' );
 		var role = msg.split(' ').slice(2).join(" ").toLowerCase(); 
