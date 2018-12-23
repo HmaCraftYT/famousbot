@@ -54,17 +54,17 @@ client.on('message',async message => {
   if(message.channel.type === 'dm') return;
 
   const args = message.content.split(' ');
-  const bucks = require('./bucks.json');
-  const path = './bucks.json';
+  const credits = require('./credits.json');
+  const path = './credits.json';
   const mention = message.mentions.users.first() || client.users.get(args[1]) || message.author;
   const mentionn = message.mentions.users.first() || client.users.get(args[1]);
   const author = message.author.id;
   const balance = args[2];
   const daily = Math.floor(Math.random() * 350) + 10;
 
-  if(!bucks[author]) bucks[author] = {bucks: 50};
-  if(!bucks[mention.id]) bucks[mention.id] = {bucks: 50};
-  fs.writeFile(path, JSON.stringify(bucks, null, 5), function(err) {if(err) console.log(err)});
+  if(!credits[author]) credits[author] = {credits: 50};
+  if(!credits[mention.id]) credits[mention.id] = {credits: 50};
+  fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
 
   
   if(message.content.startsWith(prefix + "buck")) {
