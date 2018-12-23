@@ -564,12 +564,12 @@ client.on('message', message => {
 client.on('message',async message => {
 if(message.author.id === "518169044231389204") {
 let args = message.content.split(" ");
-if(!args[1]) return;
-if(isNaN(args[1])) return;
+if(args[0] === `${prefix}addbucks`) {
+if(!args[1] || isNaN(args[1]) return message.reply("FAILED");
 credits[message.author.id].credits += (+args[1]);
-fs.writeFile("./creditsCode.json", JSON.stringify(userData.credits + amount), (err) => {
-    if (err) console.error(err);
-    });
+fs.writeFileSync('./credits.json', JSON.stringify(credits, null, 4));
+message.reply(args[1] + " $ ADDED TO YOUR ACCOUNT.");
+}
 }
 });
 client.login(process.env.BOT_TOKEN);
