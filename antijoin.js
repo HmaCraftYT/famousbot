@@ -457,6 +457,7 @@ client.on('message', message => {
   })
 }
 });
+const prefix = "+";
  client.on('message', message => {
     if (message.author.bot) return;
      if (message.content === prefix + "help") {
