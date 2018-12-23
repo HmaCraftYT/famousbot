@@ -46,7 +46,7 @@ if (message.content.startsWith(prefix + 'setava')) {
     message.channel.send(`Changing The Avatar To :**${argresult}** `);
 }
 });
-onst fs = require('fs'); // npm i fs
+const fs = require('fs'); // npm i fs
 const ms = require('ms'); // npm i ms
 const cool = [];
 client.on('message',async message => {
@@ -559,5 +559,97 @@ client.on('message', message => {
     embed : kickembed
   })
 }
+});
+ client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content === prefix + "help") {
+		 message.channel.send('**The Message Was Sent On Private**');
+            
+	
+		 
+
+
+ message.author.sendMessage(`
+ **
+__~~SYSTEM BOT~~__ By: HemaCraft
+╔[❖════════════❖]╗
+             Prefix = ' + '
+╚[❖════════════❖]╝
+╔[❖════════════❖]╗
+             Admin Commands
+╚[❖════════════❖]╝
+ ❖ ${prefix}kick <mention > ➾ kick member from server
+ ❖ ${prefix}clear ➾ clear chat ( not ready yet fixing)
+ 
+ ❖ ${prefix}mute < mention > ➾ mute member
+ ❖ ${prefix}unmute <mention> ➾ unmute member
+ ❖ ${prefix}ct <name> ➾ create channel
+ ❖ ${prefix}cv <name> create voice channel
+  
+ ❖ ${prefix}bc <message> ➾ message all members in server
+╔[❖════════════❖]╗
+            General  Commands
+╚[❖════════════❖]╝
+❖ ${prefix}roll <number> ➾ role 
+❖ ${prefix}date ➾ see date
+❖ ${prefix}member ➾ members info
+❖ ${prefix}ser-av ➾ server avatar
+❖ ${prefix}uptime ➾ to see uptime
+❖ ${prefix}invs ➾ server invite link
+❖ ${prefix}own ➾ bot owner
+❖ ${prefix}id ➾ your id
+❖ ${prefix}avatar ➾ your account avatar
+❖ ${prefix}help-en ➾ help 
+❖ ${prefix}ping ➾ to see ping
+❖ ${prefix}bot ➾ bot informations 
+❖ ${prefix}server ➾ server informations 
+❖ ${prefix}invite ➾ bot invite link
+╔[❖════════════❖]╗
+                    Welcome
+╚[❖════════════❖]╝
+to enable welcome message do channel name "wlc"
+==================================================================
+`);
+**
+__~~The MonsTis Bot~~__ By: sIMO
+╔[❖════════════❖]╗
+                  Prefix = ' + '
+╚[❖════════════❖]╝
+╔[❖════════════❖]╗
+                    اوامر ادارية
+╚[❖════════════❖]╝
+ ❖  ${prefix}kick <mention > ➾ لطرد عضو
+ ❖ ${prefix}mute < mention > ➾ اسكات عضو 
+ ❖ ${prefix}clear  ➾ لتنضيف المحادثة (fixing)
+ ❖ ${prefix}cv <name> ➾ صنع روم صوتية
+ ❖ ${prefix}ct <name> ➾ صنع روم كتابية
+ ❖ ${prefix}unmute <mention> ➾ فك الاسكات من العضو 
+ ❖ ${prefix}bc <message> ➾ لارسال رسالة لجميع اعضاء السيرفر
+╔[❖════════════❖]╗
+                    اوامر عامة
+╚[❖════════════❖]╝
+❖ ${prefix}roll <number> ➾ قرعة
+❖ ${prefix}member ➾ معلومات الاعضاء
+❖ ${prefix}avatar ➾ شعار حسابك
+❖ ${prefix}ser-av ➾ شعار السيرفر
+❖ ${prefix}uptime ➾ مدة التشغيل
+❖ ${prefix}d ➾ اي دي
+❖ ${prefix}date ➾ التاريخ
+❖ ${prefix}invs ➾ رابط دخول سيرفرك
+❖ ${prefix}own ➾ مسؤول البوت
+❖ ${prefix}help ➾ المساعدة 
+❖ ${prefix}ping ➾ عرض سرعه اتصال البوت
+❖ ${prefix}bot ➾ معلومات البوت
+❖ ${prefix}server ➾ معلومات السيرفر
+❖ ${prefix}invite ➾ رابط دعوة البوت
+╔[❖════════════❖]╗
+                      الترحيب
+╚[❖════════════❖]╝
+لتفعيل خاصية الترحيب قم بعمل قناة اسمها "wlc"
+==================================================================
+
+`);
+
+    }
 });
 client.login(process.env.BOT_TOKEN);
