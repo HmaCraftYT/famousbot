@@ -127,9 +127,9 @@ client.on("message", (message) => {
   if (message.content.startsWith("-close")) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
-       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب.-close`)
+       message.channel.send(`هل انت متأكد من اقفالك للتذكرة اذا متأكد اكتب.+close`)
            .then((m) => {
-               message.channel.awaitMessages(response => response.content === '-close', {
+               message.channel.awaitMessages(response => response.content === '+close', {
                        max: 1,
                        time: 10000,
                        errors: ['time'],
