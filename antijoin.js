@@ -262,7 +262,7 @@ client.on('message', async message => {
   let args = message.content.split(" ").slice(1);
   if(!message.content.toLowerCase().startsWith(prefix)) return;
 
-  if(command == 'mute') {
+  if(command == prefix + 'mute') {
     if(!args.join(' ')) return message.channel.send(`${prefix}mute @user <time>`)
     if(message.member.hasPermission('MANAGE_MESSAGES')) {
       if(message.channel.permissionsFor(message.guild.member(client.user)).has(['MANAGE_ROLES', 'MANAGE_CHANNELS'])) {
