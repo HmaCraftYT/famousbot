@@ -872,7 +872,7 @@ client.on('guildDelete', guild => {
 });
 client.on('guildMemberAdd', member => {
   
-  const channel = member.guild.channels.find(ch => ch.name === 'Welcome');
+  const channel = member.guild.channels.find(ch => ch.name === 'welcome');
  
   if (!channel) return;
 
