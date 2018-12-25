@@ -1088,10 +1088,11 @@ client.on('message',async msg => {
            var ccc =msg.guild.createChannel('Server Stats', 'voice').then(al => {
                 var aa =msg.guild.createChannel('Server Stats', 'voice').then(alp => {
                    var aaa =msg.guild.createChannel('Server Stats', 'voice').then(alph => {
+			var aaa =msg.guild.createChannel('Server Stats', 'voice').then(alpha => {   
        al.setParent(kk);
        alp.setParent(kk);
        alph.setParent(kk);
-       
+       alpha.setParent(kk);
      al.overwritePermissions(msg.guild.id, {
       CONNECT: false,
       SPEAK: false
@@ -1104,7 +1105,9 @@ client.on('message',async msg => {
       CONNECT: false,
       SPEAK: false
     });
-
+alpha.overwritePermissions(msg.guild.id, {
+      CONNECT: false,
+      SPEAK: false
   setInterval(() => {
       var currentTime = new Date(),
 hours = currentTime.getHours() + 2 ,
@@ -1127,6 +1130,7 @@ hours = 12;
      al.setName(`Voice Online :[ ${msg.guild.members.filter(m => m.voiceChannel).size} ]`);
       alp.setName(`Time :[${hours} : ${minutes} : ${Seconds} ${suffix}]`);
         alph.setName(`[ Date : [${Year} - ${Month} - ${Dat} ]`);
+	  alpha.setName(` Members[${memberCount}] `)
  },1000);
                    })
     
