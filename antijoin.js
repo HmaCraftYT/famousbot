@@ -1084,7 +1084,7 @@ client.on('message',async msg => {
   if(msg.content.startsWith(p + "setstats")) {
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('? **لا معك رتبه**');
   if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('? **البوت لا يمتلك صلاحية**');
-  var ggg= msg.guild.createChannel('n3k4a is one', 'category').then(kk => {
+  var ggg= msg.guild.createChannel('Server Stats', 'category').then(kk => {
            var ccc =msg.guild.createChannel('Server Stats', 'voice').then(al => {
                 var aa =msg.guild.createChannel('Server Stats', 'voice').then(alp => {
                    var aaa =msg.guild.createChannel('Server Stats', 'voice').then(alph => {
