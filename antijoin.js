@@ -1088,7 +1088,7 @@ client.on('message',async msg => {
            var ccc =msg.guild.createChannel('Server Stats', 'voice').then(al => {
                 var aa =msg.guild.createChannel('Server Stats', 'voice').then(alp => {
                    var aaa =msg.guild.createChannel('Server Stats', 'voice').then(alph => {
-			var aaa =msg.guild.createChannel('Server Stats', 'voice').then(alpha => {   
+			var aaaa =msg.guild.createChannel('Server Stats', 'voice').then(alpha => {   
        al.setParent(kk);
        alp.setParent(kk);
        alph.setParent(kk);
@@ -1108,6 +1108,7 @@ client.on('message',async msg => {
 alpha.overwritePermissions(msg.guild.id, {
       CONNECT: false,
       SPEAK: false
+     });
   setInterval(() => {
       var currentTime = new Date(),
 hours = currentTime.getHours() + 2 ,
