@@ -1137,4 +1137,23 @@ hours = 12;
   }
  
 });
+client.on('message', message => {
+    if (message.content.toLowerCase() === prefix + "help") {
+        if(!message.channel.guild) return message.channel.send("** هذا الامر للسيرفرات فقط ⛔  **");
+        message.channel.send("** تم ارسال رسالة في الخاص 📬 ** ")
+            let embed = new Discord.RichEmbed()
+
+        .setTitle("اوامر المساعدة")
+        .addField("+new",' open a new ticket ')
+        .addField("+clear", 'clear  ')
+        .addField("الامر",' ايش يسوي ')
+        .addField("الامر",' ايش يسوي ')
+        .addField("الامر",' ايش يسوي ')
+        .addField("الامر",' ايش يسوي ')
+        .addField("الامر",' ايش يسوي ')
+        .addField("الامر",' ايش يسوي ')
+        .setColor('#000000').setColor('#36393e')
+        message.author.sendEmbed(embed);
+    }
+});
 client.login(process.env.BOT_TOKEN);
