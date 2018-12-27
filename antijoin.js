@@ -1092,8 +1092,7 @@ client.on('message',async msg => {
 			   
        al.setParent(kk);
        alp.setParent(kk);
-       alph.setParent(kk);
-       alpha.setParents(kk);			   
+       alph.setParent(kk);			   
      al.overwritePermissions(msg.guild.id, {
       CONNECT: false,
       SPEAK: false
