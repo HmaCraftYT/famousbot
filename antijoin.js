@@ -1139,8 +1139,8 @@ hours = 12;
 });
 client.on('message', message => {
     if (message.content.toLowerCase() === prefix + "help") {
-        if(!message.channel.guild) return message.channel.send("** هذا الامر للسيرفرات فقط ⛔  **");
-        message.channel.send("** تم ارسال رسالة في الخاص 📬 ** ")
+        if(!message.channel.guild) return message.channel.send("** This is for servers only ⛔  **");
+        message.channel.send("** Your message has been sent📬 ** ")
             let embed = new Discord.RichEmbed()
 
         .setTitle("helping commands")
