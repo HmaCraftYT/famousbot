@@ -1156,7 +1156,12 @@ client.on('message', message => {
 	.addField("+members",' members status ')
 	.addField("+setstats",' date ,time and voice online ') 
 	.addField("+setuser",' member count ')
-	.addField("+giveaway",' to make a giveaway ')    
+	.addField("+giveaway",' to make a giveaway ') 
+	.addField("+buck",' to know your balance ')
+	.addField("+invite",' to invite the bot to your server ')
+	.addField("+daily",' to get your daily reward ')
+	.addField("+ct",' to mack a text channel ')
+	.addField("+cv",' to make a voice channel ')
         .setColor('#000000').setColor('#36393e')
         message.author.sendEmbed(embed);
     }
