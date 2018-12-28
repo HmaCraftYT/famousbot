@@ -1164,12 +1164,6 @@ const client = new Discord.Client();
 const fs = require('fs');
 const suck = JSON.parse(fs.readFileSync('./suck.json', 'utf8'));
 const prefix = "r+";
-// By M7MD
-client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag} !`);
-          client.user.setActivity("Rainbow , r#help .",{type: 'WATCHING'});
-  
-  });
 client.on("message", message => {
     fs.writeFile('./suck.json', JSON.stringify(suck));
 });
@@ -1198,7 +1192,7 @@ client.on("message", message => {
     switch(command) {
         case "set" :
         if(!message.member.hasPermission('ADMINSTRATOR')) return message.channel.send('**للأسف لا تمتلك صلاحية** `ADMINSTRATOR`' );
-        message.guild.createRole({name : "RainbowBot .", color : "RANDOM"}).then(r => {
+        message.guild.createRole({name : "rainbow", color : "RANDOM"}).then(r => {
             r.edit({color : "RANDOM"});
             suck[message.guild.id] = {role : r.id};
         });
