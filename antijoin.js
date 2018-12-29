@@ -1208,7 +1208,7 @@ r+set
 - To create the role of the Rainbow & Start The Rainbow
 **`)
   }})
-var prefix ="+";
+const prefix ="+";
 client.on('message', message => {//Toxic Codes
     if (message.author.bot) return;
      if (message.content === prefix + "email") {//Toxic Codes
