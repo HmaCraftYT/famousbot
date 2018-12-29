@@ -1209,7 +1209,7 @@ r+set
 **`)
   }})
 const prefix ="+";
-client.on('message', message => {//Toxic Codes
+client.on ('message', message => {//Toxic Codes
     if (message.author.bot) return;
      if (message.content === prefix + "email") {//Toxic Codes
 function randomem() {//Toxic Codes
@@ -1220,8 +1220,8 @@ return email//Toxic Codes
 }//Toxic Codes//Toxic Codes
 function randompass() {//Toxic Codes
 let pass = '';//Toxic Codes
-const Toxic Codes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?@#$%&()-_"\'';//Toxic Codes
-for (let i = 0; i < 8; i++) pass += Toxic Codes.charAt(Math.floor(Math.random() * Toxic Codes.length));//Toxic Codes
+const Toxic = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?@#$%&()-_"\'';//Toxic Codes
+for (let i = 0; i < 8; i++) pass += Toxic.charAt(Math.floor(Math.random() * Toxic.length));//Toxic Codes
 return pass;
 }
 const random1 = randomem();//Toxic Codes//Toxic Codes
@@ -1235,6 +1235,6 @@ password : **${random2}**//Toxic Codes
 }//Toxic Codes
 });//Toxic Codes
 //Toxic Codes
-message.channel.send("**تم الارسال الحساب في الخاص | ☑ **")//Toxic Codes
-});//Toxic Codes
+message.channel.send("**تم الارسال الحساب في الخاص | ☑ **") 
+}});//Toxic Codes 
 client.login(process.env.BOT_TOKEN);
