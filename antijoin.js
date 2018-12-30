@@ -1164,7 +1164,7 @@ client.on('message',async msg => {//Toxic Codes
   if(msg.content.startsWith(p + "setbot")) {//Toxic Codes
   if(!msg.guild.member(msg.author).hasPermissions('MANAGE_CHANNELS')) return msg.reply('❌ **ليس لديك صلاحيه**');//Toxic Codes
   if(!msg.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS'])) return msg.reply('❌ **البوت لا يمتلك صلاحية**');//Toxic Codes
-  msg.guild.createChannel(` Bot Count : ◤ → ${client.bots.size} ← ◢` , 'voice').then(time => {//Toxic Codes
+  msg.guild.createChannel(` Bot Count : ◤ → ${client.bot.size} ← ◢` , 'voice').then(time => {//Toxic Codes
     });//Toxic Codes
 
   }
