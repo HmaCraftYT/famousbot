@@ -60,6 +60,7 @@ client.on("message", message => {
  
             var args = message.content.substring(prefix.length).split(" ");
             if (message.content.startsWith(prefix + "clear")) {
+	if(args[0] !== `${prefix}مسح` && args[0] !== `${prefix}clear`) return;	    
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
@@ -1138,7 +1139,7 @@ client.on('message', message => {
 
         .setTitle("helping commands")
         .addField("+new",' open a new ticket ')
-        .addField("+clear", 'clear the chat  ')
+        .addField("+clelar", 'clear the chat  ')
         .addField("+bot",' bot information ')
         .addField("+id",' your information ')
         .addField("+kick",' to kick someone ')
