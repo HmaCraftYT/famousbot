@@ -1203,6 +1203,14 @@ client.on('message',async msg => {//Toxic Codes
   }
  
 });
+client.on('guildMemberAdd', member => {
+    const millis = new Date().getTime() - member.user.createdAt.getTime();
+    const now = new Date();
+    const createdAt = millis / 1000 / 60 / 60 / 24;
+    const days = createdAt.toFixed(0);
+    if(!days) return;
+    if( days < 30 ) { member.ban() };    
+});
 var prefix ="+";
 client.on("message", (message) => {
     if(message.content.startsWith(prefix+"gmail")) {
