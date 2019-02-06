@@ -1421,6 +1421,32 @@ client.on("reachLimit", (limit)=> {
     .catch(log.send)
   });
 });
+const invites = {};
+//Narox
+const wait = require('util').promisify(setTimeout);
+//Narox
+client.on('ready', () => {
+  wait(1000);
+//Narox
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(guildInvites => {
+      invites[g.id] = guildInvites;
+    });
+  });
+});//Narox
+//Narox
+client.on('guildMemberAdd', member => {
+  member.guild.fetchInvites().then(guildInvites => {
+    const ei = invites[member.guild.id];
+    invites[member.guild.id] = guildInvites;//Narox
+    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
+    const inviter = client.users.get(invite.inviter.id);
+    const logChannel = member.guild.channels.find("id", "welcome");
+    
+    logChannel.send(`**-** **Hello** , ${member} **Your Number** , [ ${member.guild.memberCount} ] :bust_in_silhouette: 
+**-** **Join By** <@${inviter.id}> :hearts: `);
+  });
+});//Narox
 var prefix ="+";
 client.on("message", (message) => {
     if(message.content.startsWith(prefix+"gmail")) {
