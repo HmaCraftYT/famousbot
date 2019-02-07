@@ -1447,6 +1447,87 @@ client.on('guildMemberAdd', member => {
 **-** **Join By** <@${inviter.id}> :hearts: `);
   });
 });//Narox
+client.on("message",async message => {
+if(message.content === '+shop'){//الامر
+let staff = message.guild.member(message.author).roles.find('name' ,"Seller","Good Seller","Great Seller","Trusted Seller","New Seller","Best Seller");
+      if(!staff) return message.reply(`**Only Sellers | :x:**`)
+var shopc = message.guild.channels.find("name","Shop")
+  if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
+    let shop = '';
+      let fillter = m => m.author.id === message.author.id
+      
+     
+
+      await message.channel.send("اكتب الاشياء الذي سوف تبيعها").then(e => {
+           message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
+})
+     .then(co => {
+       shop = co.first().content;
+        co.first().delete();
+     
+let desc = '';
+        
+e.edit("اكتب الدفع عند مين؟").then(e => {
+  message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+     .then(co => {
+       desc = co.first().content;
+        co.first().delete();
+e.edit("Done").then(e => {
+  shopc.send(`@everyone <$> @here
+${message.guild.name}:tm: Shop :arrow_down:
+======================
+${shop}
+=================
+**الدفع عند:** **${desc}**
+
+**تم الارسال بواسطة:** ${message.author}
+@everyone </> @here`)
+  })
+})
+  })
+})
+  })
+           
+      
+  
+     
+  
+      
+           
+}
+});
+const rWlc = {}
+client.on('message', message => {//Alpha Codes
+var prefix = "+";//البرفكس //Alpha Codes
+if(message.channel.type === "dm") return;
+if(message.author.bot) return;
+   if(!rWlc[message.guild.id]) rWlc[message.guild.id] = {//Alpha Codes
+    role: "member"//Alpha Codes
+  }//Alpha Codes
+const channel = rWlc[message.guild.id].role
+  if (message.content.startsWith(prefix + "autorole")) {//Alpha Codes
+    if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+    let newrole = message.content.split(' ').slice(1).join(" ")//Alpha Codes
+    if(!newrole) return message.reply(`**${prefix}autorole <rule name>**`)//Alpha Codes
+    rWlc[message.guild.id].role = newrole
+    message.channel.send(`**${message.guild.name}'s rolehas been changed to ${newrole}**`);//Alpha Codes
+  }
+
+
+client.on("guildMemberAdd", member => {
+      if(!rWlc[member.guild.id]) rWlc[member.guild.id] = {
+    role: "member"
+  }
+  const Role = rWlc[member.guild.id].role
+    const sRole = rWlc[member.guild.id].role
+    let Rrole = member.guild.roles.find('name', sRole);//Alpha Codes
+  member.addRole(Rrole);//Alpha Codes
+ 
+      
+      
+      });//Alpha Codes
+});//Alpha Codes
 var prefix ="+";
 client.on("message", (message) => {
     if(message.content.startsWith(prefix+"gmail")) {
