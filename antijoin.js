@@ -6,7 +6,7 @@ client.on('ready', () => {
 });
 var prefix = '+';
 
-const developers = ["518169044231389204","id"]
+const developers = ["542760200923381770","id"]
 client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
