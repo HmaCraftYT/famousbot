@@ -1451,7 +1451,7 @@ client.on("message",async message => {
 if(message.content === '+shop'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"Seller","Good Seller","Great Seller","Trusted Seller","New Seller","Best Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","Shop")
+var shopc = message.guild.channels.find("name","shop")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
