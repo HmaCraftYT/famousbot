@@ -1566,6 +1566,6 @@ client.on("message", async function (msg) {
             }
         }
     }
-})
+});
 
 client.login(process.env.BOT_TOKEN);
