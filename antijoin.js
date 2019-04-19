@@ -1474,7 +1474,7 @@ e.edit("اكتب الدفع عند مين؟").then(e => {
        desc = co.first().content;
         co.first().delete();
 e.edit("Done").then(e => {
-  shopc.send(`@everyone <$> @here
+  shopc.send(`||@everyone @here|| :heavy_dollar_sign: 
 ${message.guild.name}:tm: Shop :arrow_down:
 ======================
 ${shop}
@@ -1482,7 +1482,7 @@ ${shop}
 **الدفع عند:** **${desc}**
 
 **تم الارسال بواسطة:** ${message.author}
-@everyone </> @here`)
+||@everyone @here||`)
   })
 })
   })
