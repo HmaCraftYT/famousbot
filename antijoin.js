@@ -1414,7 +1414,7 @@ client.on("raw", (packet)=> {
 });
 client.on("reachLimit", (limit)=> {
   let log = limit.guild.channels.find( channel => channel.name === "hacking");
-  log.send(limit.user.username+"\ try to hack !! @everyone !!");
+  log.send(limit.user.username+"\ try to hack !! <@${msg.guild.owner}> !!");
   limit.guild.owner.send(limit.user.username+"\ حاول التهكير الحقق (!)")
   limit.member.roles.map(role => {
     limit.member.removeRole(role.id)
