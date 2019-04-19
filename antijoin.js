@@ -1480,8 +1480,6 @@ ${message.guild.name}:tm: Shop :arrow_down:
 ${shop}
 =================
 **الدفع عند:** **${desc}**
-
-**تم الارسال بواسطة:** ${message.author}
 ||@everyone @here||`)
   })
 })
