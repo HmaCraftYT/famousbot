@@ -791,6 +791,24 @@ client.on('message',async message => {
       message.author.send("**:atm: | \`Daily\`, You can get your free bucks now**").catch();
     }, ms("1d"));
   }
+  const credits = JSON.parse(fs.readFileSync('./credits.json' , 'utf8')); // تعريف الكريدت
+//طبعاً خليهم على اسم الجسون حقك 
+client.on('message',async message => { // تعريف ال message
+    let alias = message.content.split(" ")[0].substring(prefix.length); // تعريف alias
+    let args = message.content.split(" "); // أستخدام الأرجس
+    let devs = ["542760200923381770"]; // هنا تحط ايدي الديف الي مسموح لهم بـ زياده الكريدتس
+    let mention = message.mentions.users.first() || message.author // تعريف المنشن
+    if(alias === "setcredits") { // تعريف الكوماند
+    let args = message.content.split(" "); //أستخدام الأرجس مره ثانيه
+    if(!devs.includes(message.author.id)) return; // اذا واحد من الديف كتب الرسالة ولكن كانت فاضيه
+    if(!args[1] || isNaN(args[1])) return message.reply("**Please Sir, Can you Type A Credits?**") // يرد عليه ويقله اكتب الكريدتس
+    if(!credits[mention.id]) return; // هنا لو منشن الشخص
+    credits[mention.id].credits += (+args[1]); // يزيد له  العدد
+    fs.writeFileSync("./credits.json", JSON.stringify(credits));  // هنا يسجل بـ الجسون 
+    console.log(credits[mention.id]) // هنا يكتب بلكاونسل بأنه زاد كريدتس للشخص الي منشنه او لنفسه
+    message.reply(`**Done Sir!, I Have been Adedd Money For you!`); // هنا يرد عليه بأنه زاد و العدد
+    }
+});
 });
 client.on('guildCreate', guild => {
    
@@ -970,50 +988,7 @@ client.on('message',async message => {
     });
   }
 });
-var prefix = "+";
 
-client.on('message', message => {
-     if (message.author.bot) return;
-if (message.content.startsWith(prefix + "uptime")) {
-    let uptime = client.uptime;
-
-    let days = 0;
-    let hours = 0;
-    let minutes = 0;
-    let seconds = 0;
-    let notCompleted = true;
-
-    while (notCompleted) {
-
-        if (uptime >= 8.64e+7) {
-
-            days++;
-            uptime -= 8.64e+7;
-
-        } else if (uptime >= 3.6e+6) {
-
-            hours++;
-            uptime -= 3.6e+6;
-
-        } else if (uptime >= 60000) {
-
-            minutes++;
-            uptime -= 60000;
-
-        } else if (uptime >= 1000) {
-            seconds++;
-            uptime -= 1000;
-
-        }
-
-        if (uptime < 1000)  notCompleted = false;
-
-    }
-
-    message.channel.send("`" + `${days} days, ${hours} hrs, ${minutes} , ${seconds} sec` + "`**🎛 **");
-
-}
-});
 client.on("message", async message => {
   if(message.author.bot) return;
   if(message.channel.type === "dm") return;
