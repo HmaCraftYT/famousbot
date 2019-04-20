@@ -791,6 +791,7 @@ client.on('message',async message => {
       message.author.send("**:atm: | \`Daily\`, You can get your free bucks now**").catch();
     }, ms("1d"));
   }
+	var prefix ="+"
   const credits = JSON.parse(fs.readFileSync('./credits.json' , 'utf8')); // تعريف الكريدت
 //طبعاً خليهم على اسم الجسون حقك 
 client.on('message',async message => { // تعريف ال message
