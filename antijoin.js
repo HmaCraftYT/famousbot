@@ -1,8 +1,17 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const { Client, Util} = require('discord.js');
+const config = require("./config.json");
+const YouTube = require('simple-youtube-api');
+const ytdl = require('ytdl-core');
+
+const client = new Client({ disableEveryone: true});
+
+const youtube = new YouTube(config.GOOGLE_API_KEY);
+const PREFIX = config.prefix;
  
 client.on('ready', () => {
-  console.log(`Logged in as ${client.user.tag}!,script by HemaCraft`);
+  console.log(`Logged in as ${clienta.user.tag}!,script by HemaCraft`);
 });
 var prefix = '+';
 
@@ -1480,17 +1489,6 @@ client.on('ready', () => {// افنت التشغيل
       });
   }, 60000);// وقت الريمبو لا تغيرة لانه الوقت المسموح للتغيير
 })
-const Discord = require('discord.js');
-const { Client, Util} = require('discord.js');
-const config = require("./config.json");
-const YouTube = require('simple-youtube-api');
-const ytdl = require('ytdl-core');
-
-const client = new Client({ disableEveryone: true});
-
-const youtube = new YouTube(config.GOOGLE_API_KEY);
-const PREFIX = config.prefix;
-
 const queue = new Map();
 
 client.on('warn', console.warn);
