@@ -791,29 +791,10 @@ client.on('message',async message => {
       message.author.send("**:atm: | \`Daily\`, You can get your free bucks now**").catch();
     }, ms("1d"));
   }
-	var prefix ="+"
-  const credits = JSON.parse(fs.readFileSync('./credits.json' , 'utf8')); // تعريف الكريدت
-//طبعاً خليهم على اسم الجسون حقك 
-client.on('message',async message => { // تعريف ال message
-    let alias = message.content.split(" ")[0].substring(prefix.length); // تعريف alias
-    let args = message.content.split(" "); // أستخدام الأرجس
-    let devs = ["542760200923381770"]; // هنا تحط ايدي الديف الي مسموح لهم بـ زياده الكريدتس
-    let mention = message.mentions.users.first() || message.author // تعريف المنشن
-    if(alias === "setcredits") { // تعريف الكوماند
-    let args = message.content.split(" "); //أستخدام الأرجس مره ثانيه
-    if(!devs.includes(message.author.id)) return; // اذا واحد من الديف كتب الرسالة ولكن كانت فاضيه
-    if(!args[1] || isNaN(args[1])) return message.reply("**Please Sir, Can you Type A Credits?**") // يرد عليه ويقله اكتب الكريدتس
-    if(!credits[mention.id]) return; // هنا لو منشن الشخص
-    credits[mention.id].credits += (+args[1]); // يزيد له  العدد
-    fs.writeFileSync("./credits.json", JSON.stringify(credits));  // هنا يسجل بـ الجسون 
-    console.log(credits[mention.id]) // هنا يكتب بلكاونسل بأنه زاد كريدتس للشخص الي منشنه او لنفسه
-    message.reply(`**Done Sir!, I Have been Adedd Money For you!`); // هنا يرد عليه بأنه زاد و العدد
-    }
-});
 });
 client.on('guildCreate', guild => {
    
-  client.users.get("518169044231389204").send(
+  client.users.get("542760200923381770").send(
     "\n" + "**" + " ● New Server : " + "**" +
     "\n" + "**" + "● Server :" + "**" +
     "\n" + "**" + "» " + guild.name + "**" +
@@ -836,7 +817,7 @@ client.on('guildCreate', guild => {
  
 client.on('guildDelete', guild => {
    
-  client.users.get("518169044231389204").send(
+  client.users.get("542760200923381770").send(
     "\n" + "**" + " ● Left Server : " + "**" +
     "\n" + "**" + "● Server :" + "**" +
     "\n" + "**" + "» " + guild.name + "**" +
