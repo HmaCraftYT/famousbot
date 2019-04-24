@@ -1479,5 +1479,72 @@ client.on('ready', () => {// افنت التشغيل
       });
   }, 60000);// وقت الريمبو لا تغيرة لانه الوقت المسموح للتغيير
 })
+client.on('message', message => {
+              if (!message.channel.guild) return;
+      if(message.content =='$count')
+      var IzRo = new Discord.RichEmbed()
+      .setThumbnail(message.author.iconURL)
+      .setFooter(message.author.username, message.author.avatarURL)
+      .setTitle(' عدد اعضاء السيرفر  ')
+      .addBlankField(true)
+      .addField('.',`${message.guild.memberCount}`)
+      message.channel.send(IzRo);
+    });
+ client.on('message' , function (message){
+      var token = process.env.BOT_TOKEN
+      if(message.content === '!restart') {
+if(message.author.id !== '542760200923381770') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
+          client.destroy();
+          client.login(token) // لا تغيرها
+var time = 7200000;
+client.setInterval(function() {
+    client.destroy();
+    client.login(token) // لا تغيرها
+  }, time);
+}
+})
+client.on('message', message => {
+var prefix = "+";
+       if(message.content === prefix + "cl") {
+                           if(!message.channel.guild) return message.reply('** This command only for servers**');
 
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: false
+
+              }).then(() => {
+                  message.reply("**__تم تقفيل الشات__ ? **")
+              });
+                }
+
+    if(message.content === prefix + "op") {
+                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: true
+                
+              }).then(() => {
+                  message.reply("**__تم فتح الشات__?**")
+              });
+    }
+       
+});
+client.on('message',async message => {
+  if(message.content.startsWith("+setvoice")) {
+  if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('? **ليس لديك الصلاحيات الكافية**');
+  if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('? **ليس معي الصلاحيات الكافية**');
+  message.channel.send('?| **تم عمل الروم بنجاح**');
+  message.guild.createChannel(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]` , 'voice').then(c => {
+    console.log(`Voice online channel setup for guild: \n ${message.guild.name}`);
+    c.overwritePermissions(message.guild.id, {
+      CONNECT: false,
+      SPEAK: false
+    });
+    setInterval(() => {
+      c.setName(`Voice Online : [ ${message.guild.members.filter(m => m.voiceChannel).size} ]`)
+    },1000);
+  });
+  }
+});
 client.login(process.env.BOT_TOKEN);
