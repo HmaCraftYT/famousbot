@@ -1486,7 +1486,7 @@ client.on('message', message => {
       .setThumbnail(message.author.iconURL)
       .setFooter(message.author.username, message.author.avatarURL)
       .setTitle(' عدد اعضاء السيرفر  ')
-      .addBlankField(true)
+      .addBlankField(false)
       .addField('.',`${message.guild.memberCount}`)
       message.channel.send(IzRo);
     });
