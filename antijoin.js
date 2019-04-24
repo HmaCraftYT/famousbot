@@ -1481,7 +1481,7 @@ client.on('ready', () => {// افنت التشغيل
 })
 client.on('message', message => {
               if (!message.channel.guild) return;
-      if(message.content =='$count')
+      if(message.content =='+count')
       var IzRo = new Discord.RichEmbed()
       .setThumbnail(message.author.iconURL)
       .setFooter(message.author.username, message.author.avatarURL)
@@ -1492,7 +1492,7 @@ client.on('message', message => {
     });
  client.on('message' , function (message){
       var token = process.env.BOT_TOKEN
-      if(message.content === '!restart') {
+      if(message.content === '+restart') {
 if(message.author.id !== '542760200923381770') return message.reply('**الامر خاص بـ صاحب البوت وشكرا**');
           client.destroy();
           client.login(token) // لا تغيرها
