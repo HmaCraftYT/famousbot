@@ -1105,31 +1105,30 @@ hours = 12;
   }
  
 });
-var PREFIX ="+";
 client.on('message', message => {
     if (message.content.toLowerCase() === prefix + "help") {
         if(!message.channel.guild) return message.channel.send("** This is for servers only ⛔  **");
         message.channel.send("** Your message has been sent📬 ** ")
             let embed = new Discord.RichEmbed()
 	    .addField("Helping commands",'')
-        .addField("${PREFIX}new",' open a new ticket ')
-        .addField("${PREFIX}clear", 'clear the chat  ')
-        .addField("${PREFIX}bot",' bot information ')
-        .addField("${PREFIX}id",' your information ')
-        .addField("${PREFIX}kick",' to kick someone ')
-        .addField("${PREFIX}ban",' to ban someone ')
-        .addField("${PREFIX}mute",' to mute someone ')
-        .addField("${PREFIX}unmute",' to unmute someone ')
-	.addField("${PREFIX}server",' server information ')
-	.addField("${PREFIX}members",' members status ')
-	.addField("${PREFIX}setstats",' date ,time and voice online ') 
-	.addField("${PREFIX}setuser",' member count ')
-	.addField("${PREFIX}giveaway",' to make a giveaway ') 
-	.addField("${PREFIX}buck",' to know your balance ')
-	.addField("${PREFIX}invite",' to invite the bot to your server ')
-	.addField("${PREFIX}daily",' to get your daily reward ')
-	.addField("${PREFIX}ct",' to mack a text channel ')
-	.addField("${PREFIX}cv",' to make a voice channel ')
+        .addField("+new",' open a new ticket ')
+        .addField("+clear", 'clear the chat  ')
+        .addField("+bot",' bot information ')
+        .addField("+id",' your information ')
+        .addField("+kick",' to kick someone ')
+        .addField("+ban",' to ban someone ')
+        .addField("+mute",' to mute someone ')
+        .addField("+unmute",' to unmute someone ')
+	.addField("+server",' server information ')
+	.addField("+members",' members status ')
+	.addField("+setstats",' date ,time and voice online ') 
+	.addField("+setuser",' member count ')
+	.addField("+giveaway",' to make a giveaway ') 
+	.addField("+buck",' to know your balance ')
+	.addField("+invite",' to invite the bot to your server ')
+	.addField("+daily",' to get your daily reward ')
+	.addField("+ct",' to mack a text channel ')
+	.addField("+cv",' to make a voice channel ')
         .setColor('RANDOM')
         message.author.sendEmbed(embed);
     }
