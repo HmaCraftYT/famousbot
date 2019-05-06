@@ -1110,7 +1110,7 @@ client.on('message', message => {
         if(!message.channel.guild) return message.channel.send("** This is for servers only ⛔  **");
         message.channel.send("** Your message has been sent📬 ** ")
             let embed = new Discord.RichEmbed()
-
+	    .setcolor ("#FFFF00")
         .setTitle("helping commands")
         .addField("+new",' open a new ticket ')
         .addField("+clelar", 'clear the chat  ')
