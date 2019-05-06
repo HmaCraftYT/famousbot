@@ -1105,6 +1105,7 @@ hours = 12;
   }
  
 });
+var PREFIX ="+";
 client.on('message', message => {
     if (message.content.toLowerCase() === prefix + "help") {
         if(!message.channel.guild) return message.channel.send("** This is for servers only ⛔  **");
